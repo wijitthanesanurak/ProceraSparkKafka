@@ -82,7 +82,54 @@ object SparkProceraCompute {
   def doAnonymize(sqlContext:SQLContext, rdd: RDD[Array[String]], 
                   is_anonymize:String) = {
     try {
-      //rdd.collect.foreach(record => println(record(0) + ", " + record(1)))
+     /* rdd.collect.foreach(record => println("00" + " " + record(0) + "\n" + 
+                                            "01" + " " + record(1) + "\n" +
+                                            "02" + " " + record(2) + "\n" +
+                                            "03" + " " + record(3) + "\n" +
+                                            "04" + " " + record(4) + "\n" +
+                                            "05" + " " + record(5) + "\n" +
+                                            "06" + " " + record(6) + "\n" +
+                                            "07" + " " + record(7) + "\n" +
+                                            "08" + " " + record(8) + "\n" +
+                                            "09" + " " + record(9) + "\n" +
+                                            "10" + " " + record(10) + "\n" +
+                                            "11" + " " + record(11) + "\n" +
+                                            "12" + " " + record(12) + "\n" +
+                                            "13" + " " + record(13) + "\n" +
+                                            "14" + " " + record(14) + "\n" +
+                                            "15" + " " + record(15) + "\n" +
+                                            "16" + " " + record(16) + "\n" +
+                                            "17" + " " + record(17) + "\n" +
+                                            "18" + " " + record(18) + "\n" +
+                                            "19" + " " + record(19) + "\n" +
+                                            "20" + " " + record(20) + "\n" +
+                                            "21" + " " + record(21) + "\n" +
+                                            "22" + " " + record(22) + "\n")) 
+                                            
+      rdd.collect.foreach(record => println("23" + " " + record(23) + "\n" +
+                                            "24" + " " + record(24) + "\n" +
+                                            "25" + " " + record(25) + "\n" +
+                                            "26" + " " + record(26) + "\n" +
+                                            "27" + " " + record(27) + "\n" +
+                                            "28" + " " + record(28) + "\n" +
+                                            "29" + " " + record(29) + "\n" +
+                                            "30" + " " + record(30) + "\n" +
+                                            "31" + " " + record(31) + "\n" +
+                                            "32" + " " + record(32) + "\n" +
+                                            "33" + " " + record(33) + "\n" +
+                                            "34" + " " + record(34) + "\n" +
+                                            "35" + " " + record(35) + "\n" +
+                                            "36" + " " + record(36) + "\n" +
+                                            "37" + " " + record(37) + "\n" +
+                                            "38" + " " + record(38) + "\n" +
+                                            "39" + " " + record(39) + "\n" +
+                                            "40" + " " + record(40) + "\n" +
+                                            "41" + " " + record(41) + "\n" +
+                                            "42" + " " + record(42) + "\n" +
+                                            "43" + " " + record(43) + "\n" +
+                                            "44" + " " + record(44) + "\n"                             
+      ))
+      */
       import  sqlContext.implicits._
 			val pcr = rdd.map(m=>Procera(
 				m(0).toLong, 
@@ -117,7 +164,7 @@ object SparkProceraCompute {
 			val df = sqlContext.createDataFrame(pcr).toDF()
 			
 			df.show()
-			
+			/*
 			val df_2 = df.withColumn("flowendseconds", $"flowendseconds".cast("timestamp"))
 			//val df_1 = df.withColumn("flowendseconds", $"flowendseconds".cast("timestamp"))
 						 .withColumn("flowstartseconds", $"flowstartseconds".cast("timestamp"))
@@ -154,7 +201,7 @@ object SparkProceraCompute {
 					df_2.groupBy("ld_date").count.show
 				}
 			}
-      
+      */
     } catch {
       case oob: java.lang.ArrayIndexOutOfBoundsException =>
         //oob.printStackTrace()
@@ -194,10 +241,11 @@ object SparkProceraCompute {
 
     val kafkaParams = Map[String, String](
       //"metadata.broker.list" -> "35.196.157.137:9092",
-      "metadata.broker.list" -> "172.16.2.110:9092,172.16.2.111:9092,172.16.2.112:9092",
+      //"metadata.broker.list" -> "172.16.2.110:9092,172.16.2.111:9092,172.16.2.112:9092",
       //"metadata.broker.list" -> "localhost:9092",
       //"metadata.broker.list" -> "cjkafdc01:9092,cjkafdc02:9092,cjkafdc03:9092",
-      "group.id" -> "spark_test" 
+      "metadata.broker.list" -> "172.16.2.130:9092,172.16.2.131:9092",
+        "group.id" -> "spark_test" 
       //"auto.offset.reset" -> "largest"
     )
 
