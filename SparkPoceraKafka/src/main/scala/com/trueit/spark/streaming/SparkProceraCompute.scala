@@ -198,8 +198,8 @@ object SparkProceraCompute {
       //"metadata.broker.list" -> "localhost:9092",
       //"metadata.broker.list" -> "cjkafdc01:9092,cjkafdc02:9092,cjkafdc03:9092",
       "metadata.broker.list" -> "172.16.2.130:9092,172.16.2.131:9092",
-        "group.id" -> "spark_test" 
-      //"auto.offset.reset" -> "largest"
+      "group.id" -> "spark_test",
+      "auto.offset.reset" -> "largest"
     )
 
     System.out.println("Topic Source :" + topic_s)
